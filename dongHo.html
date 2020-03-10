@@ -1,0 +1,49 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        window.onload = function() {
+            var aImg = document.getElementsByTagName('img');
+            // alert(aImg.length);
+
+            // khai báo đối tượng date 
+            var oDate = new Date();
+            // alert(oDate.getHours());
+
+            function fixDate(n) {
+                if (n < 10) {
+                    return '0' + n; // n là số thời gian mình lấy được 
+                } else {
+                    return '' + n;
+                }
+            }
+
+            function showDate() {
+                var oDate = new Date();
+                var str = fixDate(oDate.getHours()) + fixDate(oDate.getMinutes()) + fixDate(oDate.getSeconds());
+                // alert(str);
+                for (var i = 0; i < aImg.length; i++) {
+                    aImg[i].src = 'imgs/' + str.charAt(i) + '.png';
+                }
+            }
+
+            setInterval(showDate, 1000); // nhưng lại có một trườn hợp nữa xảy ra là hàm setInterval này khi load lên phải 1 giây sau nó mới chạy, cho nên số lúc đầu là 00:00:00  
+            showDate();
+        }
+    </script>
+</head>
+
+<body style="background: #333; color: #fff; font-size: 55px;">
+    <img src="imgs/0.png" />
+    <img src="imgs/0.png" /> :
+    <img src="imgs/0.png" />
+    <img src="imgs/0.png" /> :
+    <img src="imgs/0.png" />
+    <img src="imgs/0.png" />
+</body>
+
+</html>
